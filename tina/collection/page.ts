@@ -1,5 +1,6 @@
 import type { Collection } from "tinacms";
 import { heroTemplate } from "@/components/blocks/Hero/template";
+import { aboutTemplate } from "@/components/blocks/About/template";
 import { menuTemplate } from "@/components/blocks/Menu/template";
 import { galleryTemplate } from "@/components/blocks/Gallery/template";
 import { testimonialsTemplate } from "@/components/blocks/Testimonials/template";
@@ -50,6 +51,7 @@ const Page: Collection = {
       },
       templates: [
         heroTemplate,
+        aboutTemplate,
         menuTemplate,
         galleryTemplate,
         testimonialsTemplate,

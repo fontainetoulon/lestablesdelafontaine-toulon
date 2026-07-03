@@ -280,6 +280,7 @@ html.reveal-go .reveal {
   .menu-card,
   .menu-card__media img,
   .menu__board,
+  .about__polaroid,
   .gallery__item,
   .gallery__frame img,
   .insta__item {
@@ -569,33 +570,127 @@ html.reveal-go .reveal {
 }
 
 .splat--menu {
-  width: clamp(140px, 18vw, 260px);
-  top: -30px;
-  right: -40px;
+  width: clamp(220px, 28vw, 420px);
+  top: -50px;
+  right: -70px;
   transform: rotate(24deg);
 }
 
 .splat--testimonials {
-  width: clamp(120px, 15vw, 220px);
-  bottom: -50px;
-  left: -60px;
+  width: clamp(190px, 24vw, 360px);
+  bottom: -80px;
+  left: -90px;
   transform: rotate(-15deg);
   opacity: 0.5;
 }
 
 .splat--instagram {
-  width: clamp(120px, 16vw, 230px);
-  bottom: -40px;
-  right: -50px;
+  width: clamp(190px, 25vw, 380px);
+  bottom: -70px;
+  right: -80px;
   transform: rotate(160deg);
 }
 
 .splat--cta {
-  width: clamp(150px, 20vw, 300px);
-  top: -60px;
-  left: -70px;
+  width: clamp(260px, 32vw, 500px);
+  top: -90px;
+  left: -100px;
   transform: rotate(45deg);
   opacity: 0.35;
+}
+
+.splat--about {
+  width: clamp(200px, 26vw, 400px);
+  top: -60px;
+  right: -80px;
+  transform: rotate(-30deg);
+  opacity: 0.45;
+}
+
+/* ============================================================
+   À PROPOS
+   ============================================================ */
+.about__layout {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .about__layout {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+  .about[data-variant='media-left'] .about__text {
+    order: 2;
+  }
+  .about[data-variant='media-left'] .about__media {
+    order: 1;
+  }
+}
+
+.about__eyebrow {
+  margin: 0 0 1.1rem;
+}
+
+.about__body {
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: calc(1.05rem * var(--font-scale));
+  max-width: 36rem;
+}
+
+.about__media {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  justify-items: center;
+}
+
+.about__polaroid {
+  background: #fffdf8;
+  border: 2px solid var(--ink);
+  border-radius: calc(var(--radius) * 0.6);
+  padding: 0.6rem;
+  box-shadow: 5px 6px 0 0 var(--tint);
+  width: 100%;
+  max-width: 300px;
+  transition: transform var(--motion), box-shadow var(--motion);
+}
+
+.about__polaroid img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: calc(var(--radius) * 0.35);
+  display: block;
+}
+
+.about__polaroid:first-child {
+  transform: rotate(-3.5deg) translateY(14px);
+  z-index: 1;
+}
+
+.about__polaroid:last-child:not(:first-child) {
+  transform: rotate(2.5deg) translateX(-14%) translateY(-10px);
+}
+
+.about__polaroid:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 7px 9px 0 0 var(--accent);
+  z-index: 3;
+}
+
+@media (max-width: 899px) {
+  .about__media {
+    max-width: 30rem;
+    margin-inline: auto;
+  }
 }
 
 /* ============================================================

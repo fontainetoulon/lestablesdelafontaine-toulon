@@ -1,5 +1,6 @@
 import { tinaField } from "tinacms/dist/react";
 import { Hero } from "@/components/blocks/Hero/Component";
+import { About } from "@/components/blocks/About/Component";
 import { Menu } from "@/components/blocks/Menu/Component";
 import { Gallery } from "@/components/blocks/Gallery/Component";
 import { Testimonials } from "@/components/blocks/Testimonials/Component";
@@ -10,6 +11,7 @@ import { Contact } from "@/components/blocks/Contact/Component";
 
 const BLOCKS: Record<string, React.ComponentType<{ data: any }>> = {
   PageBlocksHero: Hero,
+  PageBlocksAbout: About,
   PageBlocksServices: Menu,
   PageBlocksGallery: Gallery,
   PageBlocksTestimonials: Testimonials,

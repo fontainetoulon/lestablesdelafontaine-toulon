@@ -6,6 +6,7 @@
     },
     "siteName": "Les Tables de la Fontaine",
     "nav": [
+      { "href": "#apropos", "label": "À propos" },
       { "href": "#carte", "label": "La carte" },
       { "href": "#acces", "label": "Nous trouver" },
       { "href": "#contact", "label": "Contact" }
