@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import client from "@/tina/__generated__/client";
 import ClientPage from "./client-page";
 
-export const revalidate = 300;
+export const revalidate = 30;
 
 type Params = Promise<{ urlSegments: string[] }>;
 
