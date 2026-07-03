@@ -561,7 +561,6 @@ html.reveal-go .reveal {
   pointer-events: none;
   user-select: none;
   z-index: 0;
-  opacity: 0.85;
 }
 
 .splat ~ .container {
@@ -581,7 +580,6 @@ html.reveal-go .reveal {
   top: 48%;
   left: 40px;
   transform: rotate(-18deg);
-  opacity: 0.55;
 }
 
 @media (max-width: 900px) {
@@ -599,7 +597,6 @@ html.reveal-go .reveal {
   bottom: -80px;
   left: -90px;
   transform: rotate(-15deg);
-  opacity: 0.5;
 }
 
 .splat--instagram {
@@ -614,7 +611,6 @@ html.reveal-go .reveal {
   top: -90px;
   left: -100px;
   transform: rotate(45deg);
-  opacity: 0.35;
 }
 
 .splat--about {
@@ -622,7 +618,6 @@ html.reveal-go .reveal {
   top: -60px;
   right: -80px;
   transform: rotate(-30deg);
-  opacity: 0.45;
 }
 
 /* ============================================================
