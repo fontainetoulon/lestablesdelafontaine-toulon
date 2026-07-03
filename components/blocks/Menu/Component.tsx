@@ -5,7 +5,6 @@ import { tinaField } from "tinacms/dist/react";
 import { Media } from "@/components/Media";
 import { Lightbox, type LightboxImage } from "@/components/Lightbox";
 import { Splat } from "@/components/Splat";
-import { titleStyle } from "@/components/titleStyle";
 
 function itemPhotos(item: any): LightboxImage[] {
   const photos: LightboxImage[] = (item?.photos ?? [])
@@ -58,21 +57,6 @@ export function Menu({ data }: { data: any }) {
       <Splat color="orange" className="splat--menu" />
       <Splat color="bleu" className="splat--menu-2" />
       <div className="container">
-        <header className="section-head reveal">
-          <h2
-            className="section-head__title"
-            style={titleStyle(data)}
-            data-tina-field={tinaField(data, "title")}
-          >
-            {data.title}
-          </h2>
-          {data.intro && (
-            <p className="section-head__intro" data-tina-field={tinaField(data, "intro")}>
-              {data.intro}
-            </p>
-          )}
-        </header>
-
         <div className="menu-hero" data-has-lead={data.leadEyebrow ? "true" : "false"}>
         {data.leadEyebrow && (
           <div className="menu-lead reveal">

@@ -16,19 +16,6 @@ export const menuTemplate: Template = {
   },
   fields: [
     {
-      name: "title",
-      type: "string",
-      label: "Titre de la section",
-      required: true,
-    },
-    {
-      name: "intro",
-      type: "string",
-      label: "Introduction",
-      ui: { component: "textarea" },
-      description: "Une ou deux phrases sous le titre.",
-    },
-    {
       name: "leadEyebrow",
       type: "string",
       label: "Bloc « Pourquoi venir » — petit sur-titre",

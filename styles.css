@@ -985,11 +985,12 @@ html.reveal-go .reveal {
   justify-content: center;
 }
 
-/* En 2 colonnes, la carte se cale en haut à côté du texte */
+/* En 2 colonnes, la carte se cale en haut à côté du texte, un peu descendue */
 @media (min-width: 940px) {
   .menu-hero[data-has-lead='true'] .menu__board-wrap {
     position: sticky;
     top: 90px;
+    margin-top: clamp(3rem, 6vw, 5rem);
   }
 }
 
