@@ -23,6 +23,7 @@ export function Menu({ data }: { data: any }) {
   return (
     <section className="section menu-section" id="carte">
       <Splat color="orange" className="splat--menu" />
+      <Splat color="bleu" className="splat--menu-2" />
       <div className="container">
         <header className="section-head reveal">
           <h2
