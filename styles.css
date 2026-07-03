@@ -576,9 +576,9 @@ html.reveal-go .reveal {
 }
 
 .splat--menu-2 {
-  width: clamp(180px, 22vw, 340px);
-  top: 48%;
-  left: 40px;
+  width: clamp(160px, 18vw, 300px);
+  bottom: -70px;
+  left: -80px;
   transform: rotate(-18deg);
 }
 
@@ -588,7 +588,8 @@ html.reveal-go .reveal {
     top: -20px;
   }
   .splat--menu-2 {
-    left: -60px;
+    left: -90px;
+    bottom: -50px;
   }
 }
 
@@ -862,10 +863,25 @@ html.reveal-go .reveal {
   overflow: hidden;
 }
 
+/* Bloc « Pourquoi venir » + planche de la carte côte à côte */
+.menu-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+@media (min-width: 940px) {
+  .menu-hero[data-has-lead='true'] {
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: start;
+  }
+}
+
 /* Bloc éditorial « Pourquoi venir » */
 .menu-lead {
   max-width: 52rem;
-  margin: 0 auto clamp(3rem, 6vw, 4.5rem);
 }
 
 .menu-lead__eyebrow {
@@ -967,7 +983,14 @@ html.reveal-go .reveal {
 .menu__board-wrap {
   display: flex;
   justify-content: center;
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* En 2 colonnes, la carte se cale en haut à côté du texte */
+@media (min-width: 940px) {
+  .menu-hero[data-has-lead='true'] .menu__board-wrap {
+    position: sticky;
+    top: 90px;
+  }
 }
 
 .menu__board {

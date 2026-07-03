@@ -73,6 +73,7 @@ export function Menu({ data }: { data: any }) {
           )}
         </header>
 
+        <div className="menu-hero" data-has-lead={data.leadEyebrow ? "true" : "false"}>
         {data.leadEyebrow && (
           <div className="menu-lead reveal">
             <div className="menu-lead__head">
@@ -157,6 +158,7 @@ export function Menu({ data }: { data: any }) {
             </button>
           </div>
         )}
+        </div>
 
         <ul className="menu__grid">
           {data.items?.map((item: any, i: number) => {
