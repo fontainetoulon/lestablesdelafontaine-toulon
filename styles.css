@@ -862,6 +862,107 @@ html.reveal-go .reveal {
   overflow: hidden;
 }
 
+/* Bloc éditorial « Pourquoi venir » */
+.menu-lead {
+  max-width: 52rem;
+  margin: 0 auto clamp(3rem, 6vw, 4.5rem);
+}
+
+.menu-lead__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin: 0 0 1rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: calc(0.9rem * var(--font-scale));
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.menu-lead__eyebrow::before {
+  content: '';
+  width: clamp(2rem, 6vw, 4rem);
+  height: 3px;
+  border-radius: 3px;
+  background: var(--ink);
+}
+
+.menu-lead__title {
+  font-size: calc(clamp(2rem, 4.6vw, 3.2rem) * var(--heading-scale));
+  line-height: 1.08;
+  margin: 0 0 1.4rem;
+}
+
+.menu-lead__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--muted);
+  font-size: calc(1.08rem * var(--font-scale));
+  line-height: 1.7;
+}
+
+.menu-lead__body strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.feature-list {
+  list-style: none;
+  margin: clamp(1.8rem, 4vw, 2.6rem) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+}
+
+.feature__check {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border: 2.5px solid var(--ink);
+  box-shadow: 3px 3px 0 0 var(--ink);
+  transition: transform var(--motion);
+}
+
+.feature:hover .feature__check {
+  transform: rotate(-6deg) scale(1.08);
+}
+
+.feature__title {
+  margin: 0.15rem 0 0.2rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: calc(1.2rem * var(--heading-scale));
+  color: var(--ink);
+}
+
+.feature__desc {
+  margin: 0;
+  color: var(--muted);
+  font-size: calc(1.02rem * var(--font-scale));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feature__check {
+    transition: none;
+  }
+}
+
 /* Planche de la carte (photo du menu, cliquable) */
 .menu__board-wrap {
   display: flex;

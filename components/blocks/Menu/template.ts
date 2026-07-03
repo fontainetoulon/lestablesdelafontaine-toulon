@@ -28,6 +28,55 @@ export const menuTemplate: Template = {
       ui: { component: "textarea" },
       description: "Une ou deux phrases sous le titre.",
     },
+    {
+      name: "leadEyebrow",
+      type: "string",
+      label: "Bloc « Pourquoi venir » — petit sur-titre",
+      description: "Ex. « Pourquoi venir ? ». Laissez vide pour masquer tout ce bloc de présentation.",
+    },
+    {
+      name: "leadTitle",
+      type: "string",
+      label: "Bloc « Pourquoi venir » — grand titre",
+      description: "Ex. « Un menu chaque mois toujours personnalisé ».",
+    },
+    {
+      name: "leadAccentWord",
+      type: "string",
+      label: "Bloc « Pourquoi venir » — mot à mettre en valeur",
+      description: "Recopiez UN mot du grand titre : il sera coloré en orange.",
+    },
+    {
+      name: "leadBody",
+      type: "string",
+      label: "Bloc « Pourquoi venir » — texte",
+      ui: { component: "textarea" },
+      description:
+        "Une ligne vide = un nouveau paragraphe. Encadrez un mot de **deux étoiles** pour le mettre en gras.",
+    },
+    {
+      name: "leadFeatures",
+      type: "object",
+      label: "Bloc « Pourquoi venir » — points forts (avec coche)",
+      list: true,
+      description: "Chaque point apparaît avec une coche orange. Glissez pour réordonner.",
+      ui: {
+        itemProps: (item?: { title?: string }) => ({ label: item?.title || "Point fort" }),
+        defaultItem: {
+          title: "Des viandes maturées sur place",
+          description: "offrant une tendreté et une saveur incomparables.",
+        },
+      },
+      fields: [
+        { name: "title", type: "string", label: "Titre du point fort", required: true },
+        {
+          name: "description",
+          type: "string",
+          label: "Précision (optionnel)",
+          ui: { component: "textarea" },
+        },
+      ],
+    },
     imageField(
       "menuImage",
       "Photo de la carte (optionnel)",

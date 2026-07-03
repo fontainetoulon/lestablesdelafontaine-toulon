@@ -17,8 +17,41 @@ function itemPhotos(item: any): LightboxImage[] {
   return photos;
 }
 
+// Rend un texte en mettant en gras les portions encadrées de **deux étoiles**.
+function RichText({ text }: { text: string }) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.startsWith("**") && part.endsWith("**") ? (
+          <strong key={i}>{part.slice(2, -2)}</strong>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+}
+
+function TitleWithAccent({ title, accentWord }: { title: string; accentWord?: string | null }) {
+  if (!accentWord || !title.includes(accentWord)) return <>{title}</>;
+  const [before, ...rest] = title.split(accentWord);
+  return (
+    <>
+      {before}
+      <span className="accent-word">{accentWord}</span>
+      {rest.join(accentWord)}
+    </>
+  );
+}
+
 export function Menu({ data }: { data: any }) {
   const [lightbox, setLightbox] = useState<LightboxImage[] | null>(null);
+
+  const leadParagraphs = String(data.leadBody ?? "")
+    .split(/\n\s*\n/)
+    .map((p: string) => p.trim())
+    .filter(Boolean);
 
   return (
     <section className="section menu-section" id="carte">
@@ -39,6 +72,66 @@ export function Menu({ data }: { data: any }) {
             </p>
           )}
         </header>
+
+        {data.leadEyebrow && (
+          <div className="menu-lead reveal">
+            <div className="menu-lead__head">
+              <p className="menu-lead__eyebrow" data-tina-field={tinaField(data, "leadEyebrow")}>
+                {data.leadEyebrow}
+              </p>
+              {data.leadTitle && (
+                <h3
+                  className="menu-lead__title"
+                  data-tina-field={tinaField(data, "leadTitle")}
+                >
+                  <TitleWithAccent title={data.leadTitle} accentWord={data.leadAccentWord} />
+                </h3>
+              )}
+            </div>
+            {leadParagraphs.length > 0 && (
+              <div className="menu-lead__body" data-tina-field={tinaField(data, "leadBody")}>
+                {leadParagraphs.map((paragraph: string, i: number) => (
+                  <p key={i}>
+                    <RichText text={paragraph} />
+                  </p>
+                ))}
+              </div>
+            )}
+            {data.leadFeatures?.length > 0 && (
+              <ul className="feature-list">
+                {data.leadFeatures.map((feature: any, i: number) => (
+                  <li key={i} className="feature" data-tina-field={tinaField(feature)}>
+                    <span className="feature__check" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="22" height="22">
+                        <path
+                          d="M5 12.5l4.5 4.5L19 7"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                    <div>
+                      <p className="feature__title" data-tina-field={tinaField(feature, "title")}>
+                        {feature.title}
+                      </p>
+                      {feature.description && (
+                        <p
+                          className="feature__desc"
+                          data-tina-field={tinaField(feature, "description")}
+                        >
+                          {feature.description}
+                        </p>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
 
         {data.menuImage?.src && (
           <div className="menu__board-wrap reveal">
