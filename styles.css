@@ -278,9 +278,16 @@ html.reveal-go .reveal {
   .btn,
   .sticker,
   .menu-card,
+  .menu-card__media img,
+  .menu__board,
   .gallery__item,
+  .gallery__frame img,
   .insta__item {
     transition: none !important;
+  }
+  .lb,
+  .lb__figure {
+    animation: none !important;
   }
 }
 
@@ -543,9 +550,235 @@ html.reveal-go .reveal {
   color: var(--bg);
 }
 
+/* ---------- Taches décoratives de la marque ---------- */
+.splat-host {
+  overflow: hidden;
+}
+
+.splat {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+.splat ~ .container {
+  position: relative;
+  z-index: 1;
+}
+
+.splat--menu {
+  width: clamp(140px, 18vw, 260px);
+  top: -30px;
+  right: -40px;
+  transform: rotate(24deg);
+}
+
+.splat--testimonials {
+  width: clamp(120px, 15vw, 220px);
+  bottom: -50px;
+  left: -60px;
+  transform: rotate(-15deg);
+  opacity: 0.5;
+}
+
+.splat--instagram {
+  width: clamp(120px, 16vw, 230px);
+  bottom: -40px;
+  right: -50px;
+  transform: rotate(160deg);
+}
+
+.splat--cta {
+  width: clamp(150px, 20vw, 300px);
+  top: -60px;
+  left: -70px;
+  transform: rotate(45deg);
+  opacity: 0.35;
+}
+
+/* ============================================================
+   LIGHTBOX — visionneuse plein écran
+   ============================================================ */
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(18, 16, 40, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.75rem, 3vw, 2.5rem);
+  animation: lb-in 220ms ease both;
+}
+
+@keyframes lb-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.lb__figure {
+  margin: 0;
+  max-width: min(92vw, 1100px);
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  animation: lb-pop 320ms cubic-bezier(0.34, 1.4, 0.64, 1) both;
+}
+
+@keyframes lb-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.94) rotate(-0.5deg);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.lb__img {
+  max-width: 100%;
+  max-height: calc(100svh - 8rem);
+  object-fit: contain;
+  border-radius: calc(var(--radius) * 0.6);
+  border: 3px solid #fffdf8;
+  background: #fffdf8;
+}
+
+.lb__caption {
+  color: #fffdf8;
+  text-align: center;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0.9;
+}
+
+.lb__counter {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.lb__close,
+.lb__nav {
+  position: fixed;
+  z-index: 201;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  border: 2.5px solid var(--ink);
+  background: var(--tint);
+  color: var(--ink);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform var(--motion), background var(--motion);
+}
+
+.lb__close:hover,
+.lb__nav:hover {
+  transform: scale(1.12) rotate(-4deg);
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+.lb__close {
+  top: 1rem;
+  right: 1rem;
+}
+
+.lb__nav--prev {
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lb__nav--next {
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lb__nav--prev:hover,
+.lb__nav--next:hover {
+  transform: translateY(-50%) scale(1.12);
+}
+
+@media (max-width: 640px) {
+  .lb__nav {
+    width: 44px;
+    height: 44px;
+    font-size: 1.3rem;
+  }
+  .lb__nav--prev {
+    left: 0.4rem;
+  }
+  .lb__nav--next {
+    right: 0.4rem;
+  }
+}
+
 /* ============================================================
    CARTE & MENUS (block « services »)
    ============================================================ */
+.menu-section {
+  overflow: hidden;
+}
+
+/* Planche de la carte (photo du menu, cliquable) */
+.menu__board-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.menu__board {
+  position: relative;
+  display: block;
+  max-width: min(92vw, 640px);
+  padding: 0.9rem 0.9rem 1.1rem;
+  background: #fffdf8;
+  border: 2.5px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 8px 9px 0 0 var(--tint);
+  transform: rotate(-0.8deg);
+  cursor: zoom-in;
+  transition: transform var(--motion), box-shadow var(--motion);
+}
+
+.menu__board:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.01);
+  box-shadow: 10px 13px 0 0 var(--accent);
+}
+
+.menu__board-img {
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius) * 0.5);
+  display: block;
+}
+
+.menu__board-hint {
+  position: absolute;
+  bottom: -1rem;
+  right: 1.2rem;
+  transform: rotate(3deg);
+}
+
+.menu__board:hover .menu__board-hint {
+  transform: rotate(0deg) scale(1.08);
+}
 .menu__grid {
   display: grid;
   gap: clamp(1.2rem, 2.5vw, 1.8rem);
@@ -591,15 +824,69 @@ html.reveal-go .reveal {
   box-shadow: 7px 10px 0 0 var(--accent);
 }
 
+.menu-card__button {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu-card__button:disabled {
+  cursor: default;
+}
+
 .menu-card__media {
   aspect-ratio: 4 / 3;
   position: relative;
+  width: 100%;
   border-bottom: 2.5px solid var(--ink);
   background: var(--bg-2);
+  overflow: hidden;
 }
 
 .menu-card__media img {
   object-fit: cover;
+  transition: transform 600ms cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+.menu-card:hover .menu-card__media img {
+  transform: scale(1.07) rotate(0.5deg);
+}
+
+.menu-card__count {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 0.7rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: var(--tint);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.2em 0.8em;
+  transform: rotate(-2deg);
+}
+
+.menu-card__cta {
+  margin-top: 0.4rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: calc(0.95rem * var(--font-scale));
+  color: var(--accent);
+  transition: transform var(--motion);
+}
+
+.menu-card:hover .menu-card__cta {
+  transform: translateX(6px);
 }
 
 .menu-card__body {
@@ -709,6 +996,11 @@ html.reveal-go .reveal {
 
 .gallery__frame img {
   object-fit: cover;
+  transition: transform 600ms cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+.gallery__item:hover .gallery__frame img {
+  transform: scale(1.09);
 }
 
 .gallery[data-variant='masonry'] .gallery__item:nth-child(odd) .gallery__frame {

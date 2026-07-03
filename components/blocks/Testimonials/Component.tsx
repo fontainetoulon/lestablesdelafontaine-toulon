@@ -1,10 +1,12 @@
 import { tinaField } from "tinacms/dist/react";
 import { Media } from "@/components/Media";
+import { Splat } from "@/components/Splat";
 import { titleStyle } from "@/components/titleStyle";
 
 export function Testimonials({ data }: { data: any }) {
   return (
-    <section className="section">
+    <section className="section splat-host">
+      <Splat color="bleu" className="splat--testimonials" />
       <div className="container">
         <header className="section-head reveal">
           <h2

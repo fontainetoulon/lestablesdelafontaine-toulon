@@ -1,10 +1,12 @@
 import { tinaField } from "tinacms/dist/react";
 import { Media } from "@/components/Media";
+import { Splat } from "@/components/Splat";
 import { titleStyle } from "@/components/titleStyle";
 
 export function Instagram({ data }: { data: any }) {
   return (
-    <section className="section section--sage">
+    <section className="section section--sage splat-host">
+      <Splat color="orange" className="splat--instagram" />
       <div className="container">
         <div className="insta__head reveal">
           <h2

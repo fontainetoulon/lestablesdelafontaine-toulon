@@ -45,8 +45,9 @@
 
 - Les **3 avis** de la section « Ils ont aimé » sont des exemples à remplacer
   par de vrais avis Google (4,8★ / 693 avis sur la fiche — piochez dedans !).
-- Les textes de la carte (« Les entrées / plats / desserts ») sont des
-  descriptions génériques du concept 3-3-3 — à affiner avec la carte du mois.
+- La section « La carte du moment » reprend le **vrai menu de juillet**
+  (photo de la carte cliquable + galeries de photos par catégorie, prix 14/25/9 €,
+  menu complet 45 €/pers) — à mettre à jour chaque mois dans `/admin`.
 - L'email `contact@lestablesdelafontainetoulon.fr` et les horaires ont été
   repris de l'ancien site — à confirmer.
 

@@ -1,10 +1,28 @@
+"use client";
+
+import { useState } from "react";
 import { tinaField } from "tinacms/dist/react";
 import { Media } from "@/components/Media";
+import { Lightbox, type LightboxImage } from "@/components/Lightbox";
+import { Splat } from "@/components/Splat";
 import { titleStyle } from "@/components/titleStyle";
 
+function itemPhotos(item: any): LightboxImage[] {
+  const photos: LightboxImage[] = (item?.photos ?? [])
+    .filter((p: any) => p?.src)
+    .map((p: any) => ({ src: p.src, alt: p.alt ?? "" }));
+  if (!photos.length && item?.image?.src) {
+    photos.push({ src: item.image.src, alt: item.image.alt ?? "" });
+  }
+  return photos;
+}
+
 export function Menu({ data }: { data: any }) {
+  const [lightbox, setLightbox] = useState<LightboxImage[] | null>(null);
+
   return (
-    <section className="section" id="carte">
+    <section className="section menu-section" id="carte">
+      <Splat color="orange" className="splat--menu" />
       <div className="container">
         <header className="section-head reveal">
           <h2
@@ -20,37 +38,89 @@ export function Menu({ data }: { data: any }) {
             </p>
           )}
         </header>
+
+        {data.menuImage?.src && (
+          <div className="menu__board-wrap reveal">
+            <button
+              type="button"
+              className="menu__board"
+              onClick={() =>
+                setLightbox([{ src: data.menuImage.src, alt: data.menuImage.alt ?? "" }])
+              }
+              aria-label="Agrandir la carte"
+              data-tina-field={tinaField(data, "menuImage")}
+            >
+              <Media
+                image={data.menuImage}
+                width={900}
+                height={1200}
+                sizes="(max-width: 760px) 92vw, 640px"
+                className="menu__board-img"
+              />
+              <span className="sticker menu__board-hint" aria-hidden="true">
+                🔍 Cliquez pour agrandir
+              </span>
+            </button>
+          </div>
+        )}
+
         <ul className="menu__grid">
-          {data.items?.map((item: any, i: number) => (
-            <li key={i} className="menu-card reveal" data-tina-field={tinaField(item)}>
-              {item?.image?.src && (
-                <div className="menu-card__media">
-                  <Media
-                    image={item.image}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    tinaField={tinaField(item, "image")}
-                  />
-                </div>
-              )}
-              <div className="menu-card__body">
-                <div className="menu-card__top">
-                  <h3 className="menu-card__title" data-tina-field={tinaField(item, "title")}>
-                    {item?.title}
-                  </h3>
-                  {item?.price && (
-                    <span className="menu-card__price" data-tina-field={tinaField(item, "price")}>
-                      {item.price}
-                    </span>
+          {data.items?.map((item: any, i: number) => {
+            const photos = itemPhotos(item);
+            const cover = item?.image?.src ? item.image : item?.photos?.[0];
+            return (
+              <li key={i} className="menu-card reveal" data-tina-field={tinaField(item)}>
+                <button
+                  type="button"
+                  className="menu-card__button"
+                  onClick={() => photos.length && setLightbox(photos)}
+                  disabled={!photos.length}
+                  aria-label={
+                    photos.length
+                      ? `Voir les photos — ${item?.title} (${photos.length})`
+                      : item?.title
+                  }
+                >
+                  {cover?.src && (
+                    <div className="menu-card__media">
+                      <Media
+                        image={cover}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                      {photos.length > 1 && (
+                        <span className="menu-card__count" aria-hidden="true">
+                          {photos.length} photos
+                        </span>
+                      )}
+                    </div>
                   )}
-                </div>
-                <p className="menu-card__desc" data-tina-field={tinaField(item, "description")}>
-                  {item?.description}
-                </p>
-              </div>
-            </li>
-          ))}
+                  <div className="menu-card__body">
+                    <div className="menu-card__top">
+                      <h3 className="menu-card__title" data-tina-field={tinaField(item, "title")}>
+                        {item?.title}
+                      </h3>
+                      {item?.price && (
+                        <span className="menu-card__price" data-tina-field={tinaField(item, "price")}>
+                          {item.price}
+                        </span>
+                      )}
+                    </div>
+                    <p className="menu-card__desc" data-tina-field={tinaField(item, "description")}>
+                      {item?.description}
+                    </p>
+                    {photos.length > 0 && (
+                      <span className="menu-card__cta" aria-hidden="true">
+                        Voir les photos →
+                      </span>
+                    )}
+                  </div>
+                </button>
+              </li>
+            );
+          })}
         </ul>
+
         {data.note && (
           <div className="menu__note reveal">
             <span className="sticker" data-tina-field={tinaField(data, "note")}>
@@ -59,6 +129,8 @@ export function Menu({ data }: { data: any }) {
           </div>
         )}
       </div>
+
+      {lightbox && <Lightbox images={lightbox} onClose={() => setLightbox(null)} />}
     </section>
   );
 }

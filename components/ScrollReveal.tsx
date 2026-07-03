@@ -15,12 +15,14 @@ export function ScrollReveal() {
 
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
+        // Stagger : les éléments qui entrent ensemble apparaissent en cascade.
+        const visible = entries.filter((entry) => entry.isIntersecting);
+        visible.forEach((entry, i) => {
+          observer.unobserve(entry.target);
+          window.setTimeout(() => {
             entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        }
+          }, i * 90);
+        });
       },
       { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
     );

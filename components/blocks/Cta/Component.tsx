@@ -1,6 +1,7 @@
 import { tinaField } from "tinacms/dist/react";
 import { Media } from "@/components/Media";
 import { CtaLink } from "@/components/CtaLink";
+import { Splat } from "@/components/Splat";
 import { titleStyle } from "@/components/titleStyle";
 
 export function Cta({ data }: { data: any }) {
@@ -13,6 +14,7 @@ export function Cta({ data }: { data: any }) {
         </div>
       )}
       {data.background === "image" && <div className="cta__scrim" aria-hidden="true" />}
+      {data.background !== "image" && <Splat color="bleu" className="splat--cta" />}
       <div className="cta__inner container reveal">
         <h2
           className="cta__title"
