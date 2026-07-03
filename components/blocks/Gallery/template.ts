@@ -27,6 +27,7 @@ export const galleryTemplate: Template = {
       options: [
         { value: "grid", label: "Grille (photos carrées)" },
         { value: "masonry", label: "Mosaïque (hauteurs variées)" },
+        { value: "large", label: "Grands polaroïds (2 par ligne)" },
       ],
     },
     {

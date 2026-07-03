@@ -1071,6 +1071,63 @@ html.reveal-go .reveal {
   }
 }
 
+/* Bouton zoom : toute la carte est cliquable */
+.gallery__zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  cursor: zoom-in;
+}
+
+/* Variante « grands polaroïds » : 2 par ligne, plein format */
+.gallery[data-variant='large'] .gallery__grid {
+  grid-template-columns: 1fr;
+  max-width: 62rem;
+  margin-inline: auto;
+  gap: clamp(1.8rem, 4vw, 3rem);
+}
+
+@media (min-width: 760px) {
+  .gallery[data-variant='large'] .gallery__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.gallery[data-variant='large'] .gallery__item {
+  padding: 0.9rem 0.9rem 1.1rem;
+  border-width: 2.5px;
+  box-shadow: 7px 8px 0 0 var(--tint);
+}
+
+.gallery[data-variant='large'] .gallery__frame {
+  aspect-ratio: 4 / 3;
+  border-radius: calc(var(--radius) * 0.4);
+}
+
+.gallery[data-variant='large'] .gallery__caption {
+  font-size: calc(1.15rem * var(--font-scale));
+  padding-top: 0.8rem;
+}
+
+.gallery[data-variant='large'] .gallery__item:nth-child(odd) {
+  transform: rotate(-1.8deg);
+}
+
+.gallery[data-variant='large'] .gallery__item:nth-child(even) {
+  transform: rotate(1.5deg) translateY(12px);
+}
+
+.gallery[data-variant='large'] .gallery__item:hover {
+  transform: rotate(0deg) scale(1.03);
+  box-shadow: 9px 12px 0 0 var(--accent);
+}
+
 .gallery__item {
   margin: 0;
   background: #fffdf8;
