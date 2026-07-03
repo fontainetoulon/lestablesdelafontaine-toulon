@@ -1,58 +1,55 @@
 {
   "header": {
-    "icon": {
-      "name": "Tina",
-      "color": "orange",
-      "style": "float"
+    "logo": {
+      "src": "/uploads/logoporte.webp",
+      "alt": "Logo Les Tables de la Fontaine — verre de vin et fontaine"
     },
-    "name": "Tina Starter",
-    "color": "default",
+    "siteName": "Les Tables de la Fontaine",
     "nav": [
-      {
-        "href": "/",
-        "label": "Home"
-      },
-      {
-        "href": "/about",
-        "label": "About"
-      },
-      {
-        "href": "/posts",
-        "label": "Blog"
-      }
-    ]
+      { "href": "#carte", "label": "La carte" },
+      { "href": "#acces", "label": "Nous trouver" },
+      { "href": "#contact", "label": "Contact" }
+    ],
+    "cta": {
+      "label": "Réserver",
+      "href": "tel:0494054976",
+      "newTab": false
+    }
   },
   "footer": {
+    "baseline": "Cuisine maison et produits frais du marché, sur la place de la fontaine, au cœur du vieux Toulon.",
     "social": [
       {
-        "icon": {
-          "name": "FaLinkedin"
-        },
-        "url": "https://www.linkedin.com/company/tinacms"
-      },
-      {
-        "icon": {
-          "name": "FaGithub"
-        },
-        "url": "https://github.com/tinacms/tinacms"
-      },
-      {
-        "icon": {
-          "name": "FaYoutube"
-        },
-        "url": "https://www.youtube.com/@TinaCMS"
-      },
-      {
-        "icon": {
-          "name": "FaXTwitter"
-        },
-        "url": "https://x.com/TinaCMS"
+        "network": "instagram",
+        "url": "https://www.instagram.com/lestablesdelafontaine.toulon/"
       }
     ]
   },
-  "theme": {
-    "color": "blue",
-    "font": "sans",
-    "darkMode": "light"
+  "contact": {
+    "phone": "04 94 05 49 76",
+    "email": "contact@lestablesdelafontainetoulon.fr",
+    "address": "Place Gustave Lambert",
+    "zip": "83000",
+    "city": "Toulon",
+    "hours": [
+      { "days": "Mardi & mercredi", "opening": "10h — 15h" },
+      { "days": "Jeudi à samedi", "opening": "10h — 15h · 18h — 23h" },
+      { "days": "Dimanche & lundi", "opening": "Fermé" }
+    ]
+  },
+  "appearance": {
+    "accentColor": "#e8590c",
+    "headingFont": "heading",
+    "fontScale": "normal",
+    "headingScale": "normal",
+    "shapeStyle": "round"
+  },
+  "seo": {
+    "metaTitle": "Les Tables de la Fontaine — Restaurant bistronomique à Toulon",
+    "metaDescription": "Cuisine maison et produits frais du marché, dans un cadre convivial et authentique. Restaurant bistronomique place Gustave Lambert, au cœur du vieux Toulon. Réservation : 04 94 05 49 76.",
+    "ogImage": {
+      "src": "/uploads/IMG_3706-scaled.jpeg",
+      "alt": "La terrasse des Tables de la Fontaine devant la fontaine de la place Gustave Lambert à Toulon"
+    }
   }
 }
