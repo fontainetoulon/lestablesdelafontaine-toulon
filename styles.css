@@ -613,11 +613,20 @@ html.reveal-go .reveal {
   transform: rotate(45deg);
 }
 
+/* Positionnée DANS .about__media : dépasse en haut à droite, derrière les polaroïds */
 .splat--about {
-  width: clamp(200px, 26vw, 400px);
-  top: -60px;
-  right: -80px;
+  width: clamp(220px, 26vw, 400px);
+  top: -150px;
+  right: -150px;
   transform: rotate(-30deg);
+  z-index: 0;
+}
+
+@media (max-width: 899px) {
+  .splat--about {
+    top: -120px;
+    right: -70px;
+  }
 }
 
 /* ============================================================
@@ -625,6 +634,8 @@ html.reveal-go .reveal {
    ============================================================ */
 .about .section-head__title {
   font-size: calc(clamp(2.5rem, 5.6vw, 4.2rem) * var(--heading-scale));
+  /* La vague sous le mot accentué a besoin d'air entre les lignes */
+  line-height: 1.14;
 }
 
 .about__layout {
@@ -670,6 +681,8 @@ html.reveal-go .reveal {
 }
 
 .about__polaroid {
+  position: relative;
+  z-index: 1;
   background: #fffdf8;
   border: 2.5px solid var(--ink);
   border-radius: calc(var(--radius) * 0.6);

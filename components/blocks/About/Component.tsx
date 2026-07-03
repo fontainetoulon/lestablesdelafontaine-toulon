@@ -23,7 +23,6 @@ export function About({ data }: { data: any }) {
 
   return (
     <section className="section about splat-host" id="apropos" data-variant={data.variant ?? "media-right"}>
-      <Splat color="bleu" className="splat--about" />
       <div className="container">
         <div className="about__layout">
           <div className="about__text reveal">
@@ -49,6 +48,7 @@ export function About({ data }: { data: any }) {
           </div>
           {data.photos?.length > 0 && (
             <div className="about__media reveal">
+              <Splat color="bleu" className="splat--about" />
               {data.photos.slice(0, 2).map((photo: any, i: number) =>
                 photo?.src ? (
                   <div key={i} className="about__polaroid" data-tina-field={tinaField(photo)}>

@@ -5,7 +5,7 @@ import { titleStyle } from "@/components/titleStyle";
 
 export function Instagram({ data }: { data: any }) {
   return (
-    <section className="section section--sage splat-host">
+    <section className="section section--tint splat-host">
       <Splat color="orange" className="splat--instagram" />
       <div className="container">
         <div className="insta__head reveal">
